@@ -1,0 +1,32 @@
+{
+  "name": "ble-wormhole",
+  "version": "0.0.1",
+  "description": "Bluetooth Low Energy Offline Communication Protocol",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/heroims/WormholeProtocol.git"
+  },
+  "peerDependencies": {
+    "buffer": "^6.0.3"
+  },
+  "keywords": [
+    "Bluetooth",
+    "Low",
+    "Energy",
+    "BLE",
+    "Wormhole"
+  ],
+  "author": "heroims",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/heroims/WormholeProtocol/issues"
+  },
+  "homepage": "https://github.com/heroims/WormholeProtocol#readme",
+  "dependencies": {
+    "@abandonware/bleno": "^0.5.1-4",
+    "@abandonware/noble": "^1.9.2-19",
+    "electron-store": "^8.1.0"
+  }
+}
