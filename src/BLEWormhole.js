@@ -70,7 +70,7 @@ class Wormhole {
     }
 
     Start(receiveHandler){
-        if(discoverDeviceHandler!=undefined){
+        if(receiveHandler!=undefined){
             this.ReceiveHandler=receiveHandler;
         }
         return BLETransferManager.StartTransfer();
