@@ -26,6 +26,10 @@ class Wormhole {
             this.DiscoverDeviceStopHandler()
         });
 
+        BLETransferManager.centralMeta.on('stateChange', state=>{
+            this.BluetoothStateHandler(state);
+        })
+
         BLETransferManager.centralMeta.on('DidUpdateValueForCharacteristic', (data) => {
             var characteristic = {'uuid':data.characteristic,'value':data.value.concat(),'service':data.service,'device':data.peripheral}
             BLETransferManager.TransferReceive(null,characteristic,(err,buffers)=>{
@@ -66,12 +70,10 @@ class Wormhole {
     }
 
     Start(receiveHandler){
-        this.ReceiveHandler=receiveHandler;
+        if(discoverDeviceHandler!=undefined){
+            this.ReceiveHandler=receiveHandler;
+        }
         return BLETransferManager.StartTransfer();
-    }
-
-    StartPeripheral(){
-        return BLETransferManager.StartPeripheral();
     }
 
     SendBuffer(deviceName,deviceID,serviceUUID,characteristicUUID,sendBuffer){

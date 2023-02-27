@@ -50,13 +50,7 @@ class TransferManager {
         return new Promise((fulfill, reject)=>{
             this.StartPeripheral()
             .then(res1=>{
-                this.StartCentral()
-                .then(res2=>{
-                    fulfill({'res1':res1,'res2':res2});
-                })
-                .catch(err2=>{
-                    reject(err2);
-                })
+                fulfill({'res1':res1});
             })
             .catch(err1=>{
                 reject(err1);
