@@ -11,6 +11,10 @@ npm install ble-manager --save
 ```javascript
 BLEWormhole.CreateNativeEventEmitter();
 ```
+### CreatServer
+```javascript
+BLEWormhole.CreatServer(bleServiceUUID, connectCharaUUIDs, name);
+```
 ### Event handler
 ```javascript
 BLEWormhole.DisconnectHandler = deviceID => {
@@ -53,6 +57,10 @@ BLEWormhole.CheckState();
 ```javascript
 BLEWormhole.Scan([bleServiceUUID], dicoveredSeconds, true);
 ```
+### StopScan
+```javascript
+BLEWormhole.StopScan()
+```
 ### Start
 `receiveHandler` can replace `BLEWormhole.ReceiveHandler`
 ```javascript
@@ -66,11 +74,27 @@ BLEWormhole.Start(receiveHandler)
 ```javascript
 BLEWormhole.Connect(device.deviceID, bleServiceUUID, connectCharaUUIDs)
   .then(res => {
-    console.log('connect:' + res.characteristic, deviceProperty);
+    console.log('connect:' + res);
   })
   .catch(err => {
     console.error(err);
 });
+```
+### Disconnect
+```javascript
+BLEWormhole.Disconnect(device.deviceID)
+  .then(res => {})
+  .catch(err => {
+    console.error(err);
+  });
+```
+### StopNotification
+```javascript
+BLEWormhole.StopNotification(deviceID,serviceUUID,characteristicUUID)
+  .then(res => {})
+  .catch(err => {
+    console.error(err);
+  });
 ```
 ### Send
 ```javascript
