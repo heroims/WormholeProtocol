@@ -3,7 +3,7 @@ Bluetooth Low Energy Offline Communication Protocol
 
 ## Installation
 ```bash
-npm install ble-manager --save
+npm install ble-wormhole --save
 ```
 
 ## Usage
