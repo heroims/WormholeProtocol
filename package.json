@@ -1,6 +1,6 @@
 {
   "name": "ble-wormhole",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Bluetooth Low Energy Offline Communication Protocol",
   "main": "index.js",
   "scripts": {},
