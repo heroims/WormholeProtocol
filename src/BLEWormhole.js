@@ -10,11 +10,11 @@ class Wormhole {
 
     CreateNativeEventEmitter(){
         BLETransferManager.centralMeta.on('discover', (device)=>{   
-            var deviceName = device.address;
+            let deviceName = device.address;
             if (device.advertisement){
                 deviceName = device.advertisement.localName;
             }
-            var tmpDevice={name:deviceName,serviceUUIDs:device.advertisement.serviceUuids===undefined?device.advertisement.serviceUuids:device.advertisement.serviceUuids.concat(),deviceID:device.id,connected:false}
+            let tmpDevice={name:deviceName,serviceUUIDs:device.advertisement.serviceUuids===undefined?device.advertisement.serviceUuids:device.advertisement.serviceUuids.concat(),deviceID:device.id,connected:false}
             this.DiscoverDeviceHandler(tmpDevice)
         });
 
@@ -31,7 +31,7 @@ class Wormhole {
         })
 
         BLETransferManager.centralMeta.on('DidUpdateValueForCharacteristic', (data) => {
-            var characteristic = {'uuid':data.characteristic,'value':data.value.concat(),'service':data.service,'device':data.peripheral}
+            let characteristic = {'uuid':data.characteristic,'value':data.value.concat(),'service':data.service,'device':data.peripheral}
             BLETransferManager.TransferReceive(null,characteristic,(err,buffers)=>{
                 characteristic.value=buffers;
                 this.ReceiveHandler(characteristic);
@@ -48,7 +48,7 @@ class Wormhole {
               this.ReceiveHandler(undefined); 
             }
             else{
-              var characteristic = {'uuid':data.uuid,'value':data.value.concat(),'service':data.service,'device':data.central}
+              let characteristic = {'uuid':data.uuid,'value':data.value.concat(),'service':data.service,'device':data.central}
               BLETransferManager.TransferReceive(null,characteristic,(err,buffers)=>{
                 characteristic.value=buffers;
                 this.ReceiveHandler(characteristic);
@@ -58,7 +58,7 @@ class Wormhole {
     }
 
     CreatServer(serviceUUID,characteristicUUIDs,name = ''){
-        var deviceName = name;
+        let deviceName = name;
         if(deviceName === ''){
             deviceName = this.deviceUUID;
         }
@@ -79,7 +79,7 @@ class Wormhole {
     SendBuffer(deviceName,deviceID,serviceUUID,characteristicUUID,sendBuffer){
         BLETransferManager.TransferSend(sendBuffer,buffers=>{
             if(this.deviceUUID==deviceName){
-                var deviceIDs=[deviceID];
+                let deviceIDs=[deviceID];
                 if(deviceID == undefined || deviceID == null){
                     deviceIDs = [];
                 }
@@ -178,9 +178,9 @@ class Wormhole {
     }
 
     GenerateBLEUUID() {
-        var d = new Date().getTime();
-        var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-          var r = (d + Math.random()*16)%16 | 0;
+        let d = new Date().getTime();
+        let uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+          let r = (d + Math.random()*16)%16 | 0;
           d = Math.floor(d/16);
           return (c=='x' ? r : (r&0x3|0x8)).toString(16);
         });
@@ -188,10 +188,10 @@ class Wormhole {
     }
 
     Generate8BitUUID() {
-        var d = new Date().getTime();
-        var uuid = 'xxxxxxxx'.replace(/[xy]/g, function(c) {
-          var band = 36;
-          var r = (d + Math.random()*band)%band | 0;
+        let d = new Date().getTime();
+        let uuid = 'xxxxxxxx'.replace(/[xy]/g, function(c) {
+          let band = 36;
+          let r = (d + Math.random()*band)%band | 0;
           d = Math.floor(d/band);
           return (c=='x' ? r : (r&0x5|0x7)).toString(band);
         });

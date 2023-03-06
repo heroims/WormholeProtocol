@@ -66,10 +66,10 @@ class Peripheral {
     }
 
     addCharacteristicToService(serviceUUID, characteristic){
-        var tmpService = this.services[serviceUUID];
-        var tmpCharacteristics = tmpService.characteristics?JSON.parse(JSON.stringify(tmpService.characteristics)):[];
+        let tmpService = this.services[serviceUUID];
+        let tmpCharacteristics = tmpService.characteristics?JSON.parse(JSON.stringify(tmpService.characteristics)):[];
         tmpCharacteristics.push(characteristic);
-        var newService = new BLEPeripheralMeta.PrimaryService({uuid:serviceUUID,characteristics:tmpCharacteristics});
+        let newService = new BLEPeripheralMeta.PrimaryService({uuid:serviceUUID,characteristics:tmpCharacteristics});
         this.services[serviceUUID]=newService;
     }
 
@@ -82,9 +82,9 @@ class Peripheral {
     }
 
     sendNotification(serviceUUID,characteristicUUID,value){
-        var tmpService = this.services[serviceUUID];
+        let tmpService = this.services[serviceUUID];
         if(tmpService){
-            var tmpCharacteristic = tmpService.characteristics[characteristicUUID];
+            let tmpCharacteristic = tmpService.characteristics[characteristicUUID];
             if(tmpCharacteristic){
                 tmpCharacteristic.sendNotification(value);
             }

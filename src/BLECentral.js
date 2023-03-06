@@ -85,8 +85,8 @@ class Central{
         return new Promise((fulfill, reject)=>{
             const peripheral = this.peripherals[address];
             if(peripheral){
-                var foundService = false;
-                var foundCharacteristic = false;
+                let foundService = false;
+                let foundCharacteristic = false;
                 peripheral.services.forEach(service => {
                     if(service.uuid == serviceUUID){
                         foundService = true;
@@ -118,8 +118,8 @@ class Central{
         return new Promise((fulfill, reject)=>{
             const peripheral = this.peripherals[address];
             if(peripheral){
-                var foundService = false;
-                var foundCharacteristic = false;
+                let foundService = false;
+                let foundCharacteristic = false;
                 peripheral.services.forEach(service => {
                     if(service.uuid == serviceUUID){
                         foundService = true;

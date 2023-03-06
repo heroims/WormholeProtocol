@@ -29,7 +29,7 @@ class TransferManager {
     }
 
     AddPeripheralCharacteristicToService(bleServiceUUID,deviceCharacteristicUUID,properties){
-        var characteristic = new BLEPeripheral.PeripheralCharacteristic({
+        let characteristic = new BLEPeripheral.PeripheralCharacteristic({
             uuid:deviceCharacteristicUUID,
             properties:properties,
             value:'',
@@ -87,9 +87,9 @@ class TransferManager {
     }
 
     GenerateUUID() {
-        var d = new Date().getTime();
-        var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-          var r = (d + Math.random()*16)%16 | 0;
+        let d = new Date().getTime();
+        let uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+          let r = (d + Math.random()*16)%16 | 0;
           d = Math.floor(d/16);
           return (c=='x' ? r : (r&0x3|0x8)).toString(16);
         });
@@ -105,8 +105,8 @@ class TransferManager {
     }
 
     TransferSend(buffer, cb){
-        var dataArr=[];
-        var dataBuffer=buffer;
+        let dataArr=[];
+        let dataBuffer=buffer;
         if(dataBuffer.length<MaxSendSize){
           for (const iterator of dataBuffer) {
             dataArr.push(iterator);
@@ -142,8 +142,8 @@ class TransferManager {
             cb(err,null)
         }
         else{
-            var tmpDataArr=characteristic.value.concat();
-            var tmpDataBuffer=Buffer.from(characteristic.value);
+            let tmpDataArr=characteristic.value.concat();
+            let tmpDataBuffer=Buffer.from(characteristic.value);
             if(this.tmpWaitArr[characteristic.uuid+tag]==undefined){
                this.tmpWaitArr[characteristic.uuid+tag]=[];
             }
